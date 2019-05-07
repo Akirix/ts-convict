@@ -1,0 +1,22 @@
+{
+  "name": "convict-model",
+  "version": "0.0.1",
+  "description": "Model style decorators for your convict config.",
+  "main": "src/index.js",
+  "types": "src/types.d.ts",
+  "scripts": {
+    "test": "echo 'tested'"
+  },
+  "author": "Kelly Ferrone",
+  "license": "ISC",
+  "dependencies": {
+    "@types/convict": "^4.2.1",
+    "convict": "^5.0.0",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^5.0.1",
+    "typescript": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^9.6.48"
+  }
+}

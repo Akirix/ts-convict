@@ -1,0 +1,57 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "module": "commonjs",
+    "target": "esnext",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "pretty": true,
+    "noImplicitReturns": false,
+    "strict": false,
+    "noUnusedLocals": false,
+    "traceResolution": false,
+    "watch": false,
+    "preserveWatchOutput": true,
+    "diagnostics": false,
+    "removeComments": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "baseUrl": "src",
+    "types": [
+      "reflect-metadata",
+      "node"
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+      "./src/types.d.ts"
+    ],
+    "lib": [
+      "es2017",
+      "esnext"
+    ]
+  },
+  "files": [
+    "src/types.d.ts"
+  ],
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "deploy",
+    "dist",
+    "log",
+    "tmp",
+    ".settings",
+    "docs",
+    "config"
+  ]
+}
