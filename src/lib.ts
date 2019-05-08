@@ -1,4 +1,4 @@
-import MetaSchemaStorage from "MetaSchemaStorage";
+import MetaSchemaStorage from "./MetaSchemaStorage";
 
 function getGlobalVariable(): any {
     return global;

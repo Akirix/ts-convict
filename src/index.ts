@@ -1,4 +1,5 @@
 import 'reflect-metadata';
 
-export * from 'Property';
+export * from './decorators/Property';
+export * from './decorators/Config';
 

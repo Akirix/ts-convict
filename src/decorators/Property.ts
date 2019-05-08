@@ -1,12 +1,14 @@
-import {getMetaSchemaStorage} from './lib';
+import {getMetaSchemaStorage} from '../lib';
 
 /**
  * Anotate a config schema class property with this anotation. 
  * @param schemaObj The convict schema object. 
  */
-export default function Property(schemaObj: SchemaObj): Function {
+export function Property(schemaObj: SchemaObj): Function {
+    console.log('The decorator will run');
     return function(target: object, propertyName: string) {
         
+
         let type: any;
         // if type is not given explicitly then try to guess it
         const reflectMetadataType = Reflect && (Reflect as any).getMetadata ? (Reflect as any).getMetadata("design:type", target, propertyName) : undefined;
@@ -16,5 +18,6 @@ export default function Property(schemaObj: SchemaObj): Function {
         const className: string = target.constructor.name;
 
         getMetaSchemaStorage().addSchemaProp(className,propertyName,schemaObj);
+
     }
 }

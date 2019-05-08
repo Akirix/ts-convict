@@ -4,19 +4,34 @@
   "description": "Model style decorators for your convict config.",
   "main": "src/index.js",
   "types": "src/types.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Akirix/convict-model.git"
+  },
+  "engine": {
+    "node": "^10.11.0"
+  },
   "scripts": {
-    "test": "echo 'tested'"
+    "test": "NODE_PATH=src/ TS_NODE_FILES=true nyc mocha --opts mocha.opts",
+    "foo": "ts-node src/foo.ts --files -P tsconfig.json"
   },
   "author": "Kelly Ferrone",
   "license": "ISC",
   "dependencies": {
     "@types/convict": "^4.2.1",
     "convict": "^5.0.0",
-    "reflect-metadata": "^0.1.13",
-    "ts-node": "^5.0.1",
-    "typescript": "^2.8.1"
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
-    "@types/node": "^9.6.48"
+    "@types/js-yaml": "^3.12.1",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^9.6.48",
+    "js-yaml": "^3.13.1",
+    "mocha": "^6.1.4",
+    "mocha-typescript": "^1.1.17",
+    "nyc": "^14.1.0",
+    "source-map-support": "^0.5.12",
+    "ts-node": "^5.0.1",
+    "typescript": "^2.9.2"
   }
 }
