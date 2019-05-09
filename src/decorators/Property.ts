@@ -1,4 +1,4 @@
-import {getMetaSchemaStorage} from '../lib';
+import { getMetaSchemaStorage } from '../';
 
 /**
  * Anotate a config schema class property with this anotation. 
