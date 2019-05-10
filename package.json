@@ -17,12 +17,16 @@
   },
   "author": "Kelly Ferrone",
   "license": "ISC",
+  "peerDependencies": {
+  	"convict": "^5.0.0",
+  	"reflect-metadata": "^0.1.13",
+  	"typescript": "^2.9.2"
+  },
   "dependencies": {
-    "@types/convict": "^4.2.1",
-    "convict": "^5.0.0",
-    "reflect-metadata": "^0.1.13"
+    
   },
   "devDependencies": {
+  	"@types/convict": "^4.2.1",
     "@types/js-yaml": "^3.12.1",
     "@types/mocha": "^5.2.6",
     "@types/node": "^9.6.48",
@@ -31,7 +35,6 @@
     "mocha-typescript": "^1.1.17",
     "nyc": "^14.1.0",
     "source-map-support": "^0.5.12",
-    "ts-node": "^5.0.1",
-    "typescript": "^2.9.2"
+    "ts-node": "^5.0.1"
   }
 }

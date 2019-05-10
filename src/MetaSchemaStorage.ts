@@ -16,4 +16,19 @@ export default class MetaSchemaStorage {
 
     }
 
+    /**
+     * Returns a saved Schema Object from the storage. 
+     * @param className The name of the loaded class. 
+     */
+    public getClassSchema(className: string): SchemaObj|null {
+        return (this.schemaRepo.hasOwnProperty(className)) ? this.schemaRepo[className] : null;
+    }
+
+    /**
+     * Empties out the storage so no schemas will exist. 
+     */
+    public clearRepo(): void {
+        this.schemaRepo = {};
+    }
+
 }

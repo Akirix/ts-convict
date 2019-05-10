@@ -5,7 +5,7 @@ export default class MyConfig {
 
     @Property({
         doc: 'The name of the thing',
-        default: '',
+        default: 'Convict',
         env: 'MY_CONFIG_NAME'
     })
     name: string;
