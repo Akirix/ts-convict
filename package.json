@@ -13,20 +13,21 @@
   },
   "scripts": {
     "test": "NODE_PATH=src/ TS_NODE_FILES=true nyc mocha --opts mocha.opts",
-    "foo": "ts-node src/foo.ts --files -P tsconfig.json"
+    "foo": "ts-node src/foo.ts --files -P tsconfig.json",
+    "lint": "tslint -p tsconfig.json -c tslint.json -t verbose"
   },
   "author": "Kelly Ferrone",
   "license": "ISC",
   "peerDependencies": {
-  	"convict": "^5.0.0",
-  	"reflect-metadata": "^0.1.13",
-  	"typescript": "^2.9.2"
+    "convict": "^5.0.0",
+    "reflect-metadata": "^0.1.13"
   },
   "dependencies": {
-    
+    "convict": "^5.0.0",
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
-  	"@types/convict": "^4.2.1",
+    "@types/convict": "^4.2.1",
     "@types/js-yaml": "^3.12.1",
     "@types/mocha": "^5.2.6",
     "@types/node": "^9.6.48",
@@ -35,6 +36,8 @@
     "mocha-typescript": "^1.1.17",
     "nyc": "^14.1.0",
     "source-map-support": "^0.5.12",
-    "ts-node": "^5.0.1"
+    "ts-node": "^5.0.1",
+    "tslint": "^5.16.0",
+    "typescript": "^2.9.2"
   }
 }

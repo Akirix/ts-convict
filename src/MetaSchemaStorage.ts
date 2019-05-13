@@ -3,10 +3,19 @@ export default class MetaSchemaStorage {
 
     private schemaRepo = {};
 
+    /**
+     * Get the loaded schema from the storage
+     */
     public getSchema() {
         return this.schemaRepo;
     }
 
+    /**
+     * Add the schema of one property to the saved class
+     * @param className 
+     * @param propertyName 
+     * @param schemaObj 
+     */
     public addSchemaProp(className: string, propertyName: string, schemaObj: SchemaObj): void {
 
         if (!this.schemaRepo.hasOwnProperty(className)) {

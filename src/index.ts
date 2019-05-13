@@ -11,8 +11,8 @@ export * from './decorators/Config';
 export function getMetaSchemaStorage(): MetaSchemaStorage {
 
     const globalScope = PlatformTools.getGlobalVariable();
-    if (!globalScope.convictMetaSchemaStorage)
+    if (!globalScope.convictMetaSchemaStorage) {
         globalScope.convictMetaSchemaStorage = new MetaSchemaStorage();
-
+    }
     return globalScope.convictMetaSchemaStorage;
 }

@@ -1,0 +1,122 @@
+{
+	"defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "rulesDirectory": [],
+    "rules": {
+		"align": [false,
+			"parameters",
+			"arguments",
+			"statements"],
+		"ban": [true,
+			["angular", "forEach"]
+		],
+		"class-name": true,
+		"comment-format": [false,
+			"check-space",
+			"check-lowercase"
+		],
+		"max-classes-per-file": false,
+		"curly": true,
+		"eofline": false,
+		"forin": true,
+		"completed-docs": [true, "enums", "functions", "methods"],
+		"no-namespace": false,
+		"no-empty-interface": false,
+		"indent": [false, "tabs", 4],
+		"interface-name": false,
+		"jsdoc-format": true,
+		"object-literal-key-quotes": [true, "as-needed"],
+		"label-position": true,
+        "max-line-length": [false, 140],
+		"trailing-comma": false,
+		"ordered-imports": false,
+		"object-literal-sort-keys": false,
+		"member-ordering": [
+            true,
+            {
+                "order": [
+                    "public-static-field",
+					"public-instance-field",
+					"private-static-field",
+                    "private-instance-field",
+                    "public-constructor",
+                    "private-constructor",
+                    "public-instance-method",
+                    "protected-instance-method",
+                    "private-instance-method"
+                ]
+            }
+        ],
+		"no-any": false,
+		"no-arg": true,
+		"no-bitwise": true,
+		"no-console": [false,
+			"debug",
+			"info",
+			"time",
+			"timeEnd",
+			"trace"
+		],
+		"no-construct": true,
+		"no-constructor-vars": false,
+		"no-debugger": false,
+		"no-shadowed-variable": false,
+		"no-duplicate-variable": true,
+		"no-empty": false,
+		"no-eval": true,
+		"no-require-imports": false,
+		"no-string-literal": false,
+		"no-switch-case-fall-through": false,
+		"no-trailing-comma": false,
+		"no-trailing-whitespace": [true, "ignore-blank-lines","ignore-jsdoc","ignore-comments"],
+		"no-unused-expression": false,
+		"no-use-before-declare": true,
+		"no-var-keyword": true,
+		"no-var-requires": false,
+		"one-line": [true,
+			"check-catch",
+			"check-open-brace",
+			"check-whitespace"
+		],
+		"quotemark": [false, "double"],
+		"radix": false,
+		"semicolon": true,
+		"triple-equals": [true, "allow-null-check"],
+		"typedef": [false,
+			"callSignature",
+			"catchClause",
+			"indexSignature",
+			"parameter",
+			"propertySignature",
+			"variableDeclarator"
+		],
+		"typedef-whitespace": [true, {
+			"call-signature": "nospace",
+			"index-signature": "nospace",
+			"parameter": "nospace",
+			"property-declaration": "nospace",
+			"variable-declaration": "nospace"
+		}],
+		"variable-name": [true, "allow-leading-underscore","allow-pascal-case"],
+		"whitespace": [false,
+			"check-branch",
+			"check-decl",
+			"check-operator",
+			"check-separator",
+			"check-type"
+		]
+	},
+    "jsRules": {
+        "max-line-length": {
+            "options": [150]
+        }
+	},
+	"linterOptions": {
+		"exclude": [
+			"**/config/**",
+			"**/test/**"
+		]
+	}
+}

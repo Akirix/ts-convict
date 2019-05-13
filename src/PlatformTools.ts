@@ -6,54 +6,77 @@ import * as fs from "fs";
  */
 export default class PlatformTools {
 
-    static getGlobalVariable(): any {
+    /**
+     * Gets the global variable
+     */
+    public static getGlobalVariable(): any {
         return global;
     }
 
-    static load(name: string): any {
+    /**
+     * Load up a module from source
+     * @param name 
+     */
+    public static load(name: string): any {
         return require(name);
     }
 
     /**
      * Normalizes given path. Does "path.normalize".
      */
-    static pathNormalize(pathStr: string): string {
+    public static pathNormalize(pathStr: string): string {
         return path.normalize(pathStr);
     }
 
     /**
      * Gets file extension. Does "path.extname".
      */
-    static pathExtname(pathStr: string): string {
+    public static pathExtname(pathStr: string): string {
         return path.extname(pathStr);
     }
 
     /**
      * Resolved given path. Does "path.resolve".
      */
-    static pathResolve(pathStr: string): string {
+    public static pathResolve(pathStr: string): string {
         return path.resolve(pathStr);
     }
 
     /**
      * Synchronously checks if file exist. Does "fs.existsSync".
      */
-    static fileExist(pathStr: string): boolean {
+    public static fileExist(pathStr: string): boolean {
         return fs.existsSync(pathStr);
     }
 
-    static readFileSync(filename: string): Buffer {
+    /**
+     * Get a file from disk synchronously
+     * @param filename 
+     */
+    public static readFileSync(filename: string): Buffer {
         return fs.readFileSync(filename);
     }
 
-    static appendFileSync(filename: string, data: any): void {
+    /**
+     * Append file sync
+     * @param filename 
+     * @param data 
+     */
+    public static appendFileSync(filename: string, data: any): void {
         fs.appendFileSync(filename, data);
     }
 
-    static async writeFile(path: string, data: any): Promise<void> {
+    /**
+     * Write a file to disk
+     * @param path 
+     * @param data 
+     */
+    public static async writeFile(path: string, data: any): Promise<void> {
         return new Promise<void>((ok, fail) => {
             fs.writeFile(path, data, (err) => {
-                if (err) fail(err);
+                if (err) {
+                    fail(err);
+                }
                 ok();
             });
         });
@@ -62,7 +85,7 @@ export default class PlatformTools {
     /**
      * Gets environment variable.
      */
-    static getEnvVariable(name: string): any {
+    public static getEnvVariable(name: string): any {
         return process.env[name];
     }
 

@@ -3,9 +3,9 @@ import PlatformTools from "./PlatformTools";
 /**
  * Loads all exported classes from the given directory.
  */
-export function importClassesFromDirectories(directories: string[], formats = [".js", ".ts"]): Function[] {
+export function importClassesFromDirectories(directories: string[], formats = [".js", ".ts"]): Array<() => void> {
 
-    function loadFileClasses(exported: any, allLoaded: Function[]) {
+    const loadFileClasses = (exported: any, allLoaded: Array<() => void>) => {
         if (typeof exported === "function") {
             allLoaded.push(exported);
 
@@ -13,22 +13,22 @@ export function importClassesFromDirectories(directories: string[], formats = ["
             exported.forEach((i: any) => loadFileClasses(i, allLoaded));
 
         } else if (typeof exported === "object" && exported !== null) {
-            Object.keys(exported).forEach(key => loadFileClasses(exported[key], allLoaded));
+            Object.keys(exported).forEach((key) => loadFileClasses(exported[key], allLoaded));
 
         }
         return allLoaded;
-    }
+    };
 
     const allFiles = directories.reduce((allDirs, dir) => {
         return allDirs.concat(PlatformTools.load("glob").sync(PlatformTools.pathNormalize(dir)));
     }, [] as string[]);
 
     const dirs = allFiles
-        .filter(file => {
+        .filter((file) => {
             const dtsExtension = file.substring(file.length - 5, file.length);
             return formats.indexOf(PlatformTools.pathExtname(file)) !== -1 && dtsExtension !== ".d.ts";
         })
-        .map(file => PlatformTools.load(PlatformTools.pathResolve(file)));
+        .map((file) => PlatformTools.load(PlatformTools.pathResolve(file)));
 
     return loadFileClasses(dirs, []);
 }

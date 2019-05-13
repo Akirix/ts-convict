@@ -14,10 +14,12 @@ export default class ConvictModel {
     // Constructor
     // -------------------------------------------------------------------------
 
-    constructor(entities: (Function|string)[] | null = null) {
+    constructor(entities: Array<(()=>|string)> | null = null) {
 
         this.classRepo = {};
-        if (entities !== null) this.loadConfigClasses(entities);
+        if (entities !== null) {
+            this.loadConfigClasses(entities);
+        }
 
     }
 
@@ -28,26 +30,35 @@ export default class ConvictModel {
     /**
      * Builds the main schema object
      */
-    public loadConfigClasses(entities: (Function|string)[]) {
+    public loadConfigClasses(entities: Array<(()=>|string)>) {
 
         const [entityClasses, entityDirectories] = ConfUtils.splitClassesAndStrings(entities || []);
-        [...entityClasses, ...importClassesFromDirectories(entityDirectories)].forEach((configClass: Function) => {
+        [...entityClasses, ...importClassesFromDirectories(entityDirectories)].forEach((configClass: ()=>void) => {
             this.classRepo[configClass.name] = configClass;
         });
 
     }
 
+    /**
+     * Get one of the classes from the repo
+     * @param className 
+     */
     public getClass(className: string) {
         return this.classRepo[className];
     }
 
+    /**
+     * Cfreate a validated config from the schema and config
+     * @param className 
+     * @param config 
+     */
     public create<T>(className: string, config: T = {} as T) {
         const classSchema: SchemaObj = getMetaSchemaStorage().getClassSchema(className);
         const client: convict.Config<any> = convict(classSchema);
         client.load(config);
         client.validate( { allowed: 'strict' } );
         const validConfig: T = client.getProperties();
-        return Object.assign(new (this.getClass(className)),validConfig);
+        return Object.assign( new (this.getClass(className))() ,validConfig);
     }
 
 }
