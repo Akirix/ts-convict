@@ -1,6 +1,10 @@
 # Convict Model  
 
 [![Build Status](https://travis-ci.com/Akirix/convict-model.svg?branch=master)](https://travis-ci.com/Akirix/convict-model)
+[![NPM version](http://img.shields.io/npm/v/@akirix/convict-model.svg)](https://www.npmjs.com/package/@akirix/convict-model) 
+ 
+[![GitHub forks](https://img.shields.io/github/forks/akirix/convict-model.svg?style=social&label=Fork)](https://github.com/akirix/convict-model/fork)
+[![GitHub stars](https://img.shields.io/github/stars/akirix/convict-model.svg?style=social&label=Star)](https://github.com/akirix/convict-model)
 
 Annotate a class to define and validate your configs using [convict](https://www.npmjs.com/package/convict) 
 just like you do with an ORM. If you like annotating 
@@ -15,11 +19,15 @@ know what's up. If your using a IOC/DI system, ConvictModel will fit in real nic
  - [Typescript 3+](https://www.npmjs.com/package/typescript)
  - [Convict 5+](https://www.npmjs.com/package/convict)
 
+### Quick Links
+[Contributing](/CONTRIBUTING.md) | [Convict](https://www.npmjs.com/package/convict) | 
+|---|---|
+
 ## Installation  
 
 1. Install the package
 
-`npm install convict-model --save`  
+`npm install @akirix/convict-model --save`  
 
 2. Install `reflect-metadata` if you have not already so the annotations work. 
 
