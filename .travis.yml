@@ -1,5 +1,7 @@
 language: node_js
 
+cache: npm
+
 before_install:
   - npm install convict reflect-metadata
 
@@ -19,5 +21,6 @@ deploy:
   provider: npm
   email: kelly@akirix.com
   api_key: $NPM_TOKEN
+  skip_cleanup: true
   on:
     tags: true
