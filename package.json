@@ -13,7 +13,6 @@
   },
   "scripts": {
     "test": "NODE_PATH=src/ TS_NODE_FILES=true nyc mocha --opts mocha.opts",
-    "foo": "ts-node src/foo.ts --files -P tsconfig.json",
     "lint": "tslint -p tsconfig.json -c tslint.json -t verbose"
   },
   "author": "Kelly Ferrone",
