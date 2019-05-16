@@ -1,5 +1,7 @@
 # Convict Model  
 
+[![Build Status](https://travis-ci.org/akirix/convict-model.svg?branch=master)](https://travis-ci.org/akirix/convict-model)
+
 Annotate a class to define and validate your configs using [convict](https://www.npmjs.com/package/convict) 
 just like you do with an ORM. If you like annotating 
 models classes, then this package will tickle your fancy. The 
