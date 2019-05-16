@@ -4,6 +4,9 @@
   "description": "Model style decorators for your convict config.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Akirix/convict-model.git"
