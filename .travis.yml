@@ -6,6 +6,18 @@ before_install:
 install:
   - NODE_ENV=dev npm install
 
-script:
+before_script:
   - npm run lint
+
+script:
   - npm test
+
+before_deploy:
+  - npm build:prod
+
+deploy:
+  provider: npm
+  email: kelly@akirix.com
+  api_key: $NPM_TOKEN
+  on:
+    tags: true
