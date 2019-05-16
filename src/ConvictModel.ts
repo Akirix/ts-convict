@@ -13,8 +13,8 @@ export class ConvictModel {
     // -------------------------------------------------------------------------
     // Constructor
     // -------------------------------------------------------------------------
-
-    constructor(entities: Array<(()=>|string)> | null = null) {
+    // tslint:disable-next-line: ban-types
+    constructor(entities: Array<(Function|string)> | null = null) {
 
         this.classRepo = {};
         if (entities !== null) {
