@@ -1,0 +1,22 @@
+## typescript/node and source files
+src/
+tsconfig.json
+tsconfig.prod.json
+tslint.json
+.nvmrc
+*.tgz
+
+## testing and ci
+.nyc_output
+public
+mocha.opts
+.travis.yml
+.nycrc
+
+## ide files
+.vscode
+.editorconfig
+.gitignore
+.git
+.settings
+.project

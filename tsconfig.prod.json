@@ -1,0 +1,20 @@
+{
+  // This is used by `ts language service` and testing.
+  // Includes source and test files.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+  	"sourceMap": false
+  },
+  "exclude": [
+    "node_modules",
+    "deploy",
+    "dist",
+    "log",
+    "tmp",
+    ".settings",
+    "docs",
+    "config",
+    "src/build",
+    "src/test"
+  ]
+}

@@ -1,6 +1,6 @@
 import {importClassesFromDirectories} from "./DirectoryExportedClassesLoader";
 import ConfUtils from "./ConfUtils";
-import convict from 'convict';
+import convict, { SchemaObj } from 'convict';
 import {getMetaSchemaStorage} from './index';
 
 /**
@@ -30,7 +30,8 @@ export default class ConvictModel {
     /**
      * Builds the main schema object
      */
-    public loadConfigClasses(entities: Array<(()=>|string)>) {
+    // tslint:disable-next-line: ban-types
+    public loadConfigClasses(entities: Array<(Function|string)>) {
 
         const [entityClasses, entityDirectories] = ConfUtils.splitClassesAndStrings(entities || []);
         [...entityClasses, ...importClassesFromDirectories(entityDirectories)].forEach((configClass: ()=>void) => {

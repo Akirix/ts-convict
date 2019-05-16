@@ -1,9 +1,9 @@
 {
-  "name": "convict-model",
+  "name": "@akirix/convict-model",
   "version": "0.0.1",
   "description": "Model style decorators for your convict config.",
-  "main": "src/index.js",
-  "types": "src/types.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/Akirix/convict-model.git"
@@ -13,7 +13,9 @@
   },
   "scripts": {
     "test": "NODE_PATH=src/ TS_NODE_FILES=true nyc mocha --opts mocha.opts",
-    "lint": "tslint -p tsconfig.json -c tslint.json -t verbose"
+    "lint": "tslint -p tsconfig.json -c tslint.json -t verbose",
+    "build": "NODE_PATH=src/ TS_NODE_FILES=true tsc",
+    "build:prod": "NODE_PATH=src/ TS_NODE_FILES=true tsc -p tsconfig.prod.json"
   },
   "author": "Kelly Ferrone",
   "license": "ISC",

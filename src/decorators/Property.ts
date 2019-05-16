@@ -1,4 +1,5 @@
 import { getMetaSchemaStorage } from '../';
+import { SchemaObj } from 'convict';
 
 /**
  * Anotate a config schema class property with this anotation. 

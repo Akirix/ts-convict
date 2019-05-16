@@ -6,7 +6,7 @@
     "module": "commonjs",
     "target": "esnext",
     "sourceMap": true,
-    "declaration": false,
+    "declaration": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "esModuleInterop": true,
@@ -30,17 +30,13 @@
       "node"
     ],
     "typeRoots": [
-      "node_modules/@types",
-      "./src/types.d.ts"
+      "node_modules/@types"
     ],
     "lib": [
       "es2017",
       "esnext"
     ]
   },
-  "files": [
-    "src/types.d.ts"
-  ],
   "include": [
     "src/**/*.ts"
   ],

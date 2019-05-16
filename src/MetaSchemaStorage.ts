@@ -1,3 +1,4 @@
+import { SchemaObj } from "convict";
 
 export default class MetaSchemaStorage {
 
