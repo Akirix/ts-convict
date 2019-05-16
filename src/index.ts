@@ -4,6 +4,7 @@ import MetaSchemaStorage from "./MetaSchemaStorage";
 
 export * from './decorators/Property';
 export * from './decorators/Config';
+export * from './ConvictModel';
 
 /**
  * Gets schema storage from the global

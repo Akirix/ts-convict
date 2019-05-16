@@ -105,6 +105,8 @@ read all about the possible options in [convicts documentation](https://www.npmj
 
 `src/schema/MyConfig.ts`
 ```typescript
+import { Property } from '@akirix/convict-model';
+
 export default class MyConfig implements config.MyConfig {
     
     @Property({
@@ -137,7 +139,7 @@ situation. The example below is the simplest way in the spirit of TL;DR.
 
 `src/index.ts`
 ```typescript
-import ConvictModel from '../ConvictModel';
+import { ConvictModel } from '@akirix/convict-model';
 
 //get your config file however you do it
 const myRawConfig = getMyConfigData();

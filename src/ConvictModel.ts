@@ -6,7 +6,7 @@ import {getMetaSchemaStorage} from './index';
 /**
  * 
  */
-export default class ConvictModel {
+export class ConvictModel {
 
     private classRepo: any;
 

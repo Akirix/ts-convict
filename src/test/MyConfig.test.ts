@@ -5,7 +5,7 @@ import { suite, test } from "mocha-typescript";
 import * as assert from "assert";
 import "mocha";
 import MyConfig from './model/MyConfig';
-import ConvictModel from '../ConvictModel';
+import {ConvictModel} from '../index';
 import {getMetaSchemaStorage} from '../index';
 
 const builder: ConvictModel = new ConvictModel();
