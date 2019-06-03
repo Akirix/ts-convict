@@ -20,8 +20,8 @@ know what's up. If your using a IOC/DI system, ConvictModel will fit in real nic
  - [Convict 5+](https://www.npmjs.com/package/convict)
 
 ### Quick Links
-[Contributing](/CONTRIBUTING.md) | [Convict](https://www.npmjs.com/package/convict) | 
-|---|---|
+[Contributing](/CONTRIBUTING.md) | [Changelog](/CHANGELOG.md) | [Convict](https://www.npmjs.com/package/convict) | 
+|---|---|---|
 
 ## Installation  
 
