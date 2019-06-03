@@ -6,7 +6,6 @@ import { SchemaObj } from 'convict';
  * @param schemaObj The convict schema object. 
  */
 export function Property(schemaObj: SchemaObj) {
-    console.log('The decorator will run');
     return (target: object, propertyName: string) => {
         
         let type: any;
