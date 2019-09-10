@@ -6,8 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+
+## [0.1.0] - 2019-10-10
+### Added
  - A super well done changelog. Hope you agree. 
- - Other convict model classes as a property for other classes
+ - Other convict model classes as a property
+ - some good tests
 
 ## [0.0.5] - 2019-05-16
 ### Added
