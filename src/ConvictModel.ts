@@ -49,17 +49,37 @@ export class ConvictModel {
     }
 
     /**
-     * Cfreate a validated config from the schema and config
+     * Create a validated config from the schema and config
      * @param className 
      * @param config 
      */
     public create<T>(className: string, config: T = {} as T) {
+        // console.log("Running for class: ", this.getClass(className));
+        // gets the schema for the class from the global registry
         const classSchema: SchemaObj = getMetaSchemaStorage().getClassSchema(className);
-        const client: convict.Config<any> = convict(classSchema);
-        client.load(config);
+        const configClass: T = new (this.getClass(className))();
+        const convictSchema = {};
+        const flatConfig = {};
+        Object.keys(classSchema).forEach((key: string) => {
+            if (classSchema[key] instanceof Function) {
+                const subConfigClass = classSchema[key]();
+                configClass[key] = this.create(subConfigClass.name, (key in config) ? config[key] : {});
+            } else {
+                convictSchema[key] = classSchema[key];
+                if (key in config) {
+                    flatConfig[key] = config[key];
+                }
+            }
+        });
+        // now apply the actual data of the config to the schema and validate with convict itself
+        // console.log("Loading this schema and config", convictSchema, flatConfig);
+        const client: convict.Config<any> = convict(convictSchema);
+        client.load(flatConfig);
         client.validate( { allowed: 'strict' } );
+
+        // get all the validated values with defaults and apply them to a brand new serialized instance from your model class
         const validConfig: T = client.getProperties();
-        return Object.assign( new (this.getClass(className))() ,validConfig);
+        return Object.assign( configClass ,validConfig);
     }
 
 }

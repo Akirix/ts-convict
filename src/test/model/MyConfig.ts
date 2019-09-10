@@ -1,4 +1,5 @@
 import {Property, Config} from "../../";
+import SubConfig from './SubConfig'
 
 @Config
 export default class MyConfig {
@@ -8,6 +9,11 @@ export default class MyConfig {
         default: 'Convict',
         env: 'MY_CONFIG_NAME'
     })
-    name: string;
+    public name: string;
+
+    @Property(
+        () => SubConfig
+    )
+    public subConfig: SubConfig;
 
 }

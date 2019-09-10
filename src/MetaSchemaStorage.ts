@@ -17,7 +17,7 @@ export default class MetaSchemaStorage {
      * @param propertyName 
      * @param schemaObj 
      */
-    public addSchemaProp(className: string, propertyName: string, schemaObj: SchemaObj): void {
+    public addSchemaProp(className: string, propertyName: string, schemaObj: SchemaObj | Function ): void {
 
         if (!this.schemaRepo.hasOwnProperty(className)) {
             this.schemaRepo[className] = {};
