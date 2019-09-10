@@ -17,6 +17,7 @@ export default class MetaSchemaStorage {
      * @param propertyName 
      * @param schemaObj 
      */
+    // tslint:disable-next-line: ban-types
     public addSchemaProp(className: string, propertyName: string, schemaObj: SchemaObj | Function ): void {
 
         if (!this.schemaRepo.hasOwnProperty(className)) {

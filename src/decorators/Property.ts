@@ -5,6 +5,7 @@ import { SchemaObj } from 'convict';
  * Anotate a config schema class property with this anotation. 
  * @param schemaObj The convict schema object. 
  */
+// tslint:disable-next-line: ban-types
 export function Property(schemaObj: SchemaObj | Function) {
     return (target: object, propertyName: string) => {
         
