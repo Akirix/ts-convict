@@ -1,7 +1,9 @@
 import {Property, Config} from "../../";
 import SubConfig from './SubConfig'
 
-@Config
+@Config({
+    as: 'foo'
+})
 export default class MyConfig {
 
     @Property({

@@ -62,7 +62,8 @@ schema classes. This is a very simple Typescript folder structure.
 MyProject
 ├── src                  // place of your TypeScript code
 │   ├── schema           // place where your config entities will go
-│   │   └── MyConfig.ts  // sample entity
+│   │   ├── MyConfig.ts  // sample entity
+│   │   └── SubConfig.ts // a nested entity
 │   ├── types.d.ts       // place to put your interfaces  
 │   └── index.ts         // start point of your application
 ├── .gitignore           // standard gitignore file

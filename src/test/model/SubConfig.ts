@@ -1,6 +1,5 @@
 import {Property, Config} from "../../";
 
-@Config
 export default class SubConfig {
 
     @Property({

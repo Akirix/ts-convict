@@ -17,3 +17,9 @@ export function getMetaSchemaStorage(): MetaSchemaStorage {
     }
     return globalScope.convictMetaSchemaStorage;
 }
+
+export interface SchemaRepoItem {
+    name: string;
+    schema: any;
+    class: any;
+}
