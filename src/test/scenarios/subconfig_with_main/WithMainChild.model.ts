@@ -3,10 +3,10 @@ import {Property, Config} from "../../";
 export default class SubConfig {
 
     @Property({
-        doc: 'The foo',
+        doc: 'The bar',
         default: 0,
-        env: 'SUB_CONFIG_FOO'
+        env: 'SUB_CONFIG_BAR'
     })
-    public foo: number;
+    public bar: number;
 
 }

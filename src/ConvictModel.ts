@@ -34,9 +34,7 @@ export class ConvictModel {
     public loadConfigClasses(entities: Array<(Function|string)>) {
 
         const [entityClasses, entityDirectories] = ConfUtils.splitClassesAndStrings(entities || []);
-        [...entityClasses, ...importClassesFromDirectories(entityDirectories)].forEach((configClass: ()=>void) => {
-            this.classRepo[configClass.name] = configClass;
-        });
+        [...entityClasses, ...importClassesFromDirectories(entityDirectories)].forEach((_configClass: ()=>void) => {});
 
     }
 
@@ -48,16 +46,16 @@ export class ConvictModel {
     public createSimple<T>(alias: string, config: T = {} as T) {
         // console.log("Running for class: ", this.getClass(className));
         // gets the schema for the class from the global registry
-        const classSchema: any = getMetaSchemaStorage().findByAlias(alias);
-        const configModel: T = new classSchema.target();
+        const classMeta: any = getMetaSchemaStorage().findByAlias(alias);
+        const configModel: T = new classMeta.target();
         const flatSchema = {};
         const flatConfig = {};
         // convict.addParser(classSchema.parser);
-        Object.keys(classSchema).forEach((key: string) => {
-            if (classSchema[key] instanceof Function) {
-                configModel[key] = this.createSimple(classSchema[key].name, (key in config) ? config[key] : {});
+        Object.keys(classMeta.schema).forEach((key: string) => {
+            if (classMeta.schema[key] instanceof Function) {
+                configModel[key] = this.createSimple(classMeta.schema[key].name, (key in config) ? config[key] : {});
             } else {
-                flatSchema[key] = classSchema[key];
+                flatSchema[key] = classMeta.schema[key];
                 if (key in config) {
                     flatConfig[key] = config[key];
                 }
@@ -79,16 +77,17 @@ export class ConvictModel {
      * @param className
      * @param config
      */
-    public create<T>(alias: string, config: any | string = {}) {
+    public create<T>(alias: string, config: any | string = {}): T {
 
         //if just a string then we need the actual class
-        const classSchema = getMetaSchemaStorage().findByAlias(alias);
-        let configModel: T = new classSchema.target();
-        let convictSchema = {};
-        convict.addParser(classSchema.parser);
+        const classMeta = getMetaSchemaStorage().findByAlias(alias);
+
+        if (classMeta.parser) {
+            convict.addParser(classMeta.parser);
+        }
 
         // recursively set up the schema a
-        [configModel,convictSchema] = this.setModel<typeof classSchema.target>(classSchema,configModel,convictSchema);
+        const convictSchema = this.getSchemaFor(alias);
         const client: convict.Config<any> = convict(convictSchema);
 
         // either load the file or the data for the config
@@ -101,10 +100,20 @@ export class ConvictModel {
         // validate all the data is just right
         client.validate( { allowed: 'strict' } );
         const rawConfig = client.getProperties();
-        console.log('The convictmodel before assign is is ', configModel);
-        configModel = Object.assign( configModel ,rawConfig);
-        console.log('The convictmodel after assign is is ', configModel);
+        const configModel: T = this.applyDataToModel(classMeta,rawConfig);
         return configModel;
+    }
+
+    /**
+     * Returns the entire convict schema for a specified alias
+     * @param alias
+     */
+    public getSchemaFor(alias: string) {
+        return getMetaSchemaStorage().parseSchema(alias);
+    }
+
+    public clear() {
+        return getMetaSchemaStorage().clearRepo();
     }
 
     /**
@@ -134,6 +143,34 @@ export class ConvictModel {
             }
         });
         return [configModel, convictSchema];
+    }
+
+    /**
+     * Applies data from a valid config to the actual model
+     *
+     */
+    private applyDataToModel(classMeta: string | any, config: any = {}): any {
+
+        if (typeof classMeta === 'string') {
+            classMeta = getMetaSchemaStorage().findByAlias(classMeta);
+        }
+        const model: any = new classMeta.target();
+        Object.keys(classMeta.schema).forEach((key: string) => {
+            // if the value in the class schema is a function then we have a submodel to recurse
+            if (classMeta.schema[key] instanceof Function) {
+                model[key] = this.applyDataToModel(
+                    classMeta.schema[key].name,
+                    (key in config) ? config[key] : {}
+                );
+            }
+            // otherwise just a simple convict schema def
+            else {
+                if (key in config) {
+                    model[key] = config[key];
+                }
+            }
+        });
+        return model;
     }
 
     /**

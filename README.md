@@ -111,7 +111,7 @@ import SubConfig from './SubConfig';
 import * as yaml from 'js-yaml';
 
 @Config({
-    as: 'theConfig',// an alias for the config file
+    as: 'foo',// an alias for the config file, i.e base name
     dir: 'config',// relative to NODE_PATH or cwd()
     parser: { 
         extension: ['yml', 'yaml'], 

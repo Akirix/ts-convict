@@ -3,7 +3,7 @@ language: node_js
 cache: npm
 
 before_install:
-  - npm install convict reflect-metadata
+  - npm run install:dev
 
 install:
   - NODE_ENV=dev npm install

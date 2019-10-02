@@ -29,16 +29,17 @@ export default class MetaSchemaStorage {
      * @param target
      */
     public setClass<T>(target: new () => T, isEntry: boolean = false, opts: ConfigOptions = {}): any {
-        console.log(`Setting the class ${target.name}`);
         const className = target.name;
 
+        // we absolutely need the items index so try to get it
+        // we will add the new class if it is not in the repo in the case we get an error thrown
         let itemIndex: number;
         try {
             itemIndex = this.getClassIndex(className);
         } catch (error) {
             this.schemaRepo.push({
-                as: null,
-                dir: null,
+                as: target.name,
+                dir: 'config',
                 schema: {},
                 parser: null,
                 target
@@ -49,31 +50,6 @@ export default class MetaSchemaStorage {
             this.schemaRepo[itemIndex] = Object.assign(this.schemaRepo[itemIndex],opts);
         }
         return this.schemaRepo[itemIndex];
-    }
-
-    /**
-     * Finds the index of a class in the repo
-     * @param className The name of the class you are looking for.
-     */
-    private getClassIndex(className: string) {
-        const index = this.schemaRepo.findIndex((item: any) => {
-            return item.target.name === className;
-        });
-        if (index === -1) {
-            throw new Error(`Could not find the ${className} class in the repo`);
-        }
-        return index;
-    }
-
-    /**
-     * Returns a saved Schema Object from the storage.
-     * @param className The name of the loaded class.
-     */
-    public getClassSchema(className: string) {
-        if (!this.schemaRepo.hasOwnProperty(className)) {
-            throw new Error("The class is not in the repo");
-        }
-        return this.schemaRepo[className];
     }
 
     /**
@@ -105,10 +81,48 @@ export default class MetaSchemaStorage {
     }
 
     /**
+     * Recursivly sets the schema
+     * @param schema
+     */
+    public parseSchema(alias: string): any {
+
+        // initiate an object for convicts schema and get the raw class meta
+        const convictSchema: any = {};
+        const classMeta = this.findByAlias(alias);
+
+        // use the class meta to build the convict schema
+        Object.keys(classMeta.schema).forEach((key: string) => {
+            // if the value in the class schema is a function then we have a submodel to recurse
+            if (classMeta.schema[key] instanceof Function) {
+                convictSchema[key] = this.parseSchema(classMeta.schema[key].name);
+            }
+            // otherwise just a simple convict schema def
+            else {
+                convictSchema[key] = classMeta.schema[key];
+            }
+        });
+        return convictSchema;
+    }
+
+    /**
      * Empties out the storage so no schemas will exist.
      */
     public clearRepo(): void {
         this.schemaRepo = [];
+    }
+
+    /**
+     * Finds the index of a class in the repo
+     * @param className The name of the class you are looking for.
+     */
+    private getClassIndex(className: string) {
+        const index = this.schemaRepo.findIndex((item: any) => {
+            return item.target.name === className;
+        });
+        if (index === -1) {
+            throw new Error(`Could not find the ${className} class in the repo`);
+        }
+        return index;
     }
 
 }

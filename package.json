@@ -1,5 +1,5 @@
 {
-  "name": "@akirix/convict-model",
+  "name": "convict-model",
   "version": "0.1.0",
   "description": "Model style decorators for your convict config.",
   "main": "dist/index.js",
@@ -15,9 +15,9 @@
     "node": "^10.11.0"
   },
   "scripts": {
-    "install:dev": "npm install && npm install convict reflect-metadata --no-save",
+    "install:dev": "npm install convict reflect-metadata js-yaml --no-save",
     "test": "NODE_PATH=src/ TS_NODE_FILES=true nyc mocha --opts mocha.opts src/test/**/*.test.ts",
-    "debug": "",
+    "debug": "NODE_ENV=dev node --inspect-brk=9229 ./node_modules/.bin/ts-node --files -P tsconfig.json src/test/debug.ts",
     "lint": "tslint -p tsconfig.json -c tslint.json -t verbose",
     "build": "NODE_PATH=src/ TS_NODE_FILES=true tsc",
     "build:prod": "NODE_PATH=src/ TS_NODE_FILES=true tsc -p tsconfig.prod.json"

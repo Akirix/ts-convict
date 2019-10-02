@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 
+## [0.2.0] - 2019-11-02
+### Added
+ - renamed to just convict-model, dropped the @akirix
+ - a lot of useful tests and even debug scripts
+ - types are guessed when format left empty on a property annotation
+ - simple top level gettter for convictModel called `getConvictModel`
+ - refactored a bunch to open up more features from convict
+ - defined the Config annotation
+ - two ways to create now, both have the same useage too
+   - simpleCreate: recursive create flat configs and merge to one
+   - create: get the whole convict schema and whole config and load all at once
+
 ## [0.1.0] - 2019-10-10
 ### Added
  - A super well done changelog. Hope you agree. 

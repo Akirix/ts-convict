@@ -21,7 +21,6 @@ export interface ConfigOptions {
  */
 export function Config<T>(opts: ConfigOptions = {}) {
     return (constructor: new () => T) => {
-        console.log('The class annotation ran',opts);
         if (typeof opts.as === 'undefined') {
             opts.as = constructor.name;
         }
