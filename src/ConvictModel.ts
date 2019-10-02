@@ -112,6 +112,9 @@ export class ConvictModel {
         return getMetaSchemaStorage().parseSchema(alias);
     }
 
+    /**
+     * Completely removes all meta items from the global repo
+     */
     public clear() {
         return getMetaSchemaStorage().clearRepo();
     }
