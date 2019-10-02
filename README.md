@@ -94,6 +94,10 @@ on config at all.
 declare namespace config {
     export interface MyConfig {
         name: string;
+        subConfig: SubConfig;
+    }
+    export interface SubConfig {
+        bar: number;
     }
 }
 ```
@@ -133,6 +137,19 @@ export default class MyConfig implements config.MyConfig {
 }
 ```
 
+`src/schema/SubConfig.ts`
+```typescript
+export default class SubConfig {
+    @Property({
+        doc: 'A sub prop',
+        default: 3,
+        env: 'SUB_CONFIG_BAR',
+        format: 'int'
+    })
+    public bar: number;
+}
+```
+
 ### 3. Make a Configuration  
 
 Now we can make our configuration for our app. This can be a hardcoded Object in 
@@ -142,7 +159,10 @@ how you type out and load the data.
 `config.json`
 ```json
 {
-    "name": "Cool App"
+    "name": "Cool App",
+    "subConfig": {
+        "bar": 5
+    }
 }
 ```
 
@@ -153,13 +173,13 @@ situation. The example below is the simplest way in the spirit of TL;DR.
 
 `src/index.ts`
 ```typescript
-import { ConvictModel } from '@akirix/convict-model';
+import { getConvictModel, ConvictModel } from '@akirix/convict-model';
 
 //get your config file however you do it
 const myRawConfig = getMyConfigData();
 
 //initialize the ConvictModel with a list of paths or entities to load as the schema
-const convictModel: ConvictModel = new ConvictModel(['src/schema/**/*.*s']);
+const convictModel: ConvictModel = getConvictModel(['src/schema/**/*.*s']);
 
 //get your validated config object as a serialized class
 const myConfig: config.MyConfig = convictModel.create<config.MyConfig>('MyConfig',myRawConfig);
