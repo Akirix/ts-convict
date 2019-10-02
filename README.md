@@ -1,7 +1,7 @@
 # Convict Model  
 
 [![Build Status](https://travis-ci.com/Akirix/convict-model.svg?branch=master)](https://travis-ci.com/Akirix/convict-model)
-[![NPM version](http://img.shields.io/npm/v/@akirix/convict-model.svg)](https://www.npmjs.com/package/@akirix/convict-model) 
+[![NPM version](http://img.shields.io/npm/v/@akirix/convict-model.svg)](https://www.npmjs.com/package/convict-model) 
  
 [![GitHub forks](https://img.shields.io/github/forks/akirix/convict-model.svg?style=social&label=Fork)](https://github.com/akirix/convict-model/fork)
 [![GitHub stars](https://img.shields.io/github/stars/akirix/convict-model.svg?style=social&label=Star)](https://github.com/akirix/convict-model)
