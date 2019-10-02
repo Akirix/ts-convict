@@ -26,7 +26,7 @@ export class MyConfigTest {
     public testSchemaStorageHasSchemas() {
 
         const shouldBeInStorage = {
-            name: 'foo',
+            as: 'foo',
             dir: 'config',
             target: MyConfig,
             isEntry: true,
@@ -42,38 +42,30 @@ export class MyConfigTest {
         };
 
         const theStorage = getMetaSchemaStorage();
-        const isInStorage: any = theStorage.findByClassName('MyConfig');
+        const isInStorage: any = theStorage.findByAlias('foo');
 
-        console.log("In the storage");
+        /* console.log("In the storage");
         console.dir(isInStorage);
         console.log("Should be in storage");
-        console.dir(shouldBeInStorage);
-
+        console.dir(shouldBeInStorage); */
+        assert.deepStrictEqual(isInStorage,shouldBeInStorage);
         assert.strictEqual(
-            shouldBeInStorage.name,
-            isInStorage.name,
+            isInStorage.as,
+            shouldBeInStorage.as,
             'Expected the schemas to be the same.'
         );
+        assert.strictEqual(isInStorage.dir,shouldBeInStorage.dir);
     }
 
     @test
-    public testTheClassWasSavedAndRetrievable() {
-        assert.deepEqual(
-            builder.getClass('MyConfig'),
-            MyConfig,
-            'Expected the class to be an instance of MyConfig'
-        );
-    }
-
-    @test.skip
-    public testGettingValidConfig() {
-        const myRawConfig: MyConfig = {
+    public testGettingValidConfigRecursed() {
+        const myRawConfig: any = {
             name: 'Bubbles',
             subConfig: {
                 foo: 4
             }
         };
-        const myValidConfig: MyConfig = builder.create<MyConfig>('MyConfig', myRawConfig);
+        const myValidConfig: MyConfig = builder.createSimple<MyConfig>('foo', myRawConfig);
         console.log("My Valid config");
         console.dir(myValidConfig);
         //make sure we got a proper serialized type back

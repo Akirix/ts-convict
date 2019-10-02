@@ -15,7 +15,9 @@
     "node": "^10.11.0"
   },
   "scripts": {
-    "test": "NODE_PATH=src/ TS_NODE_FILES=true nyc mocha --opts mocha.opts",
+    "install:dev": "npm install && npm install convict reflect-metadata --no-save",
+    "test": "NODE_PATH=src/ TS_NODE_FILES=true nyc mocha --opts mocha.opts src/test/**/*.test.ts",
+    "debug": "",
     "lint": "tslint -p tsconfig.json -c tslint.json -t verbose",
     "build": "NODE_PATH=src/ TS_NODE_FILES=true tsc",
     "build:prod": "NODE_PATH=src/ TS_NODE_FILES=true tsc -p tsconfig.prod.json"
@@ -23,10 +25,6 @@
   "author": "Kelly Ferrone",
   "license": "ISC",
   "peerDependencies": {
-    "convict": "^5.0.0",
-    "reflect-metadata": "^0.1.13"
-  },
-  "dependencies": {
     "convict": "^5.0.0",
     "reflect-metadata": "^0.1.13"
   },

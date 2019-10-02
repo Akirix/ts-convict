@@ -107,7 +107,17 @@ read all about the possible options in [convicts documentation](https://www.npmj
 `src/schema/MyConfig.ts`
 ```typescript
 import { Property } from '@akirix/convict-model';
+import SubConfig from './SubConfig';
+import * as yaml from 'js-yaml';
 
+@Config({
+    as: 'theConfig',// an alias for the config file
+    dir: 'config',// relative to NODE_PATH or cwd()
+    parser: { 
+        extension: ['yml', 'yaml'], 
+        parse: yaml.safeLoad
+    }
+})
 export default class MyConfig implements config.MyConfig {
     
     @Property({
@@ -116,6 +126,9 @@ export default class MyConfig implements config.MyConfig {
         env: 'MY_CONFIG_NAME'
     })
     public name: string;
+
+    @Property(SubConfig)
+    public subConfig: SubConfig;
 
 }
 ```

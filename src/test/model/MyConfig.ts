@@ -1,5 +1,5 @@
 import {Property, Config} from "../../";
-import SubConfig from './SubConfig'
+import SubConfig from './SubConfig';
 
 @Config({
     as: 'foo'
@@ -13,9 +13,7 @@ export default class MyConfig {
     })
     public name: string;
 
-    @Property(
-        () => SubConfig
-    )
+    @Property(SubConfig)
     public subConfig: SubConfig;
 
 }

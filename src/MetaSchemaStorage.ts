@@ -55,7 +55,7 @@ export default class MetaSchemaStorage {
      * Finds the index of a class in the repo
      * @param className The name of the class you are looking for.
      */
-    public getClassIndex(className: string) {
+    private getClassIndex(className: string) {
         const index = this.schemaRepo.findIndex((item: any) => {
             return item.target.name === className;
         });
@@ -96,7 +96,7 @@ export default class MetaSchemaStorage {
      */
     public findByAlias(alias: string) {
         const items =  this.schemaRepo.filter((item) => {
-            return item.as === alias;
+            return (item.as === alias || item.target.name === alias);
         });
         if (!items || items.length !== 1) {
             throw new Error(`Could not find the class for ${alias} in the repo`);
