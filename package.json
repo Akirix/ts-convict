@@ -1,6 +1,6 @@
 {
   "name": "ts-convict",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Model style decorators for your convict config.",
   "author": "Kelly Ferrone",
   "license": "ISC",
@@ -21,7 +21,7 @@
     "url": "https://github.com/Akirix/ts-convict.git"
   },
   "bugs": {
-      "url": "https://github.com/Akirix/ts-convict/issues"
+    "url": "https://github.com/Akirix/ts-convict/issues"
   },
   "homepage": "https://github.com/Akirix/ts-convict",
   "engine": {
