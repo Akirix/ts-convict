@@ -1,14 +1,14 @@
-# Typescript Convict  
+# TS Convict  
 
-[![Build Status](https://travis-ci.com/Akirix/convict-model.svg?branch=master)](https://travis-ci.com/Akirix/convict-model)
-[![NPM version](http://img.shields.io/npm/v/convict-model.svg)](https://www.npmjs.com/package/convict-model) 
+[![Build Status](https://travis-ci.com/Akirix/ts-convict.svg?branch=master)](https://travis-ci.com/Akirix/ts-convict)
+[![NPM version](http://img.shields.io/npm/v/ts-convict.svg)](https://www.npmjs.com/package/ts-convict) 
  
-[![GitHub forks](https://img.shields.io/github/forks/akirix/convict-model.svg?style=social&label=Fork)](https://github.com/akirix/convict-model/fork)
-[![GitHub stars](https://img.shields.io/github/stars/akirix/convict-model.svg?style=social&label=Star)](https://github.com/akirix/convict-model)
+[![GitHub forks](https://img.shields.io/github/forks/akirix/ts-convict.svg?style=social&label=Fork)](https://github.com/akirix/ts-convict/fork)
+[![GitHub stars](https://img.shields.io/github/stars/akirix/ts-convict.svg?style=social&label=Star)](https://github.com/akirix/ts-convict)
 
 Annotate a class to define and validate your configs using [convict](https://www.npmjs.com/package/convict) 
 just like you do with an ORM. If you like annotating 
-models classes, then this package will tickle your fancy. The 
+models classes with Typescript, then this package will tickle your fancy. The 
 code style and patterns are based on [Typeorm](https://typeorm.io/#/) because they 
 know what's up. If your using a IOC/DI system, ConvictModel will fit in real nice. 
 
@@ -27,7 +27,7 @@ know what's up. If your using a IOC/DI system, ConvictModel will fit in real nic
 
 1. Install the package
 
-`npm install @akirix/convict-model --save`  
+`npm install ts-convict --save`  
 
 2. Install `reflect-metadata` if you have not already so the annotations work. 
 
@@ -110,7 +110,7 @@ read all about the possible options in [convicts documentation](https://www.npmj
 
 `src/schema/MyConfig.ts`
 ```typescript
-import { Property } from '@akirix/convict-model';
+import { Property } from 'ts-convict';
 import SubConfig from './SubConfig';
 import * as yaml from 'js-yaml';
 
@@ -139,6 +139,8 @@ export default class MyConfig implements config.MyConfig {
 
 `src/schema/SubConfig.ts`
 ```typescript
+import { Property } from 'ts-convict';
+
 export default class SubConfig {
     @Property({
         doc: 'A sub prop',
@@ -173,7 +175,7 @@ situation. The example below is the simplest way in the spirit of TL;DR.
 
 `src/index.ts`
 ```typescript
-import { getConvictModel, ConvictModel } from '@akirix/convict-model';
+import { getConvictModel, ConvictModel } from 'ts-convict';
 
 //get your config file however you do it
 const myRawConfig = getMyConfigData();
