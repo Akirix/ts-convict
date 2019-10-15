@@ -1,5 +1,5 @@
 {
-  "name": "convict-model",
+  "name": "ts-convict",
   "version": "0.2.1",
   "description": "Model style decorators for your convict config.",
   "author": "Kelly Ferrone",
@@ -18,8 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Akirix/convict-model.git"
+    "url": "https://github.com/Akirix/ts-convict.git"
   },
+  "bugs": {
+      "url": "https://github.com/Akirix/ts-convict/issues"
+  },
+  "homepage": "https://github.com/Akirix/ts-convict",
   "engine": {
     "node": "^10.11.0"
   },

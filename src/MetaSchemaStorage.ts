@@ -1,5 +1,5 @@
 import { SchemaObj } from "convict";
-import { ConfigOptions } from "decorators/Config";
+import { ConfigOptions } from "./decorators/Config";
 
 export default class MetaSchemaStorage {
 
