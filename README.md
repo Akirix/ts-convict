@@ -1,4 +1,4 @@
-# Convict Model  
+# Typescript Convict  
 
 [![Build Status](https://travis-ci.com/Akirix/convict-model.svg?branch=master)](https://travis-ci.com/Akirix/convict-model)
 [![NPM version](http://img.shields.io/npm/v/convict-model.svg)](https://www.npmjs.com/package/convict-model) 
